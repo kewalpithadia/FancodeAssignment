@@ -120,6 +120,7 @@ class FanCode:
 
 
 
+
 if __name__ == "__main__":
     config = configparser.ConfigParser()
     config.read('coloums.cfg')
