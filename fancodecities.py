@@ -110,7 +110,6 @@ class FanCode:
         config = configparser.ConfigParser()
         config.read('coloums.cfg')
         userkeys = config.get("keys", "userkeys").split(",")
-        taskkeys = config.get("keys", "taskkeys").split(",")
         for key in usertodocompeted.keys():
             pass
 
