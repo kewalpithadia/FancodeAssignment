@@ -183,12 +183,21 @@ if __name__ == "__main__":
             endpoint = item.split("=")[-1]
         if item.startswith("latrange="):
             city_lat = [int(x) for x in item.split("=")[-1].split(",")]
-        if item.startswith("lmgrange="):
+        if item.startswith("lngrange="):
             city_lng = [int(x) for x in item.split("=")[-1].split(",")]
         if item.startswith("format="):
             format = item.split("=")[-1]
 
     if format not in ["json", "table"]:
         format = None
+        print("All Users Having More Than 50 Percent Task Completed Data Will Be Printed As JSON")
+    else:
+        print("All Users Having More Than 50 Percent Task Selected Data Will Be Printed As %s" % format.upper())
+    if city_lat[0]> city_lat[1]:
+        print("No Proper Range Provided For City Latitude")
+        sys.exit(1)
+    if city_lng[0]> city_lng[1]:
+        print("No Proper Range Provided For City Longitude")
+        sys.exit(1)
     obj = FanCode(endpoint, city_lng_range=city_lng, city_lat_range=city_lat)
     response = obj.main(format)
