@@ -99,7 +99,7 @@ class FanCode:
             if userid in todousermaping.keys():
                 completed_task = int(todousermaping.get(userid).get("completed"))
                 total_task = len(todousermaping.get(userid).get("tasks"))
-                if completed_task >= total_task * 0.5:
+                if completed_task > total_task * 0.5:
                     usertodocompeted[userid] = {"data": item, "tasks": todousermaping.get(userid).get("tasks"),
                                                 "CompletedTask": completed_task, "TotalTask": total_task}
             else:
