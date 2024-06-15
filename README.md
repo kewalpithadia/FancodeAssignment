@@ -18,12 +18,12 @@ Note :-
 - requirement.txt library (`python3 -m pip install -r requirements.txt`)
 
 ### Resources(APIs) :- Endpoint http://jsonplaceholder.typicode.com/ 
-[/todos](http://jsonplaceholder.typicode.com/)
-[/posts](http://jsonplaceholder.typicode.com/)
-[/comments](http://jsonplaceholder.typicode.com/)
-[/albums](http://jsonplaceholder.typicode.com/)
-[/photos](http://jsonplaceholder.typicode.com/)
-[/users](http://jsonplaceholder.typicode.com/)
+[/todos](http://jsonplaceholder.typicode.com/todos)
+[/posts](http://jsonplaceholder.typicode.com/posts)
+[/comments](http://jsonplaceholder.typicode.com/comments)
+[/albums](http://jsonplaceholder.typicode.com/albums)
+[/photos](http://jsonplaceholder.typicode.com/photos)
+[/users](http://jsonplaceholder.typicode.com/users)
 
 
 
