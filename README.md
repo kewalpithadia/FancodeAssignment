@@ -98,6 +98,7 @@ Note:
 - Ensure keys specified in columns.cfg are valid and exist in the user data structure.
 Incorrect keys will be mentioned in the output.
 - If no keys are specified in userkeys. All data of Users will be displayed.
+- If format is not provided or format is not in json/table script will print json with complete user and tasks data.
 
 ## Example
 ```bash
