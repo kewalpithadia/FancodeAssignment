@@ -2,7 +2,7 @@ Fancode Assignment
 =====
 
 ## Scope Of The Assingment
-```
+
 Task : To Automate the Below Scenario.
 Scenario :- All the users of City `FanCode` should have more than half of their todos task completed.
 Given User has the todo tasks
@@ -12,7 +12,11 @@ Then User Completed task percentage should be greater than 50%
 Note :-
 - You can use any language to write api automation/Framework.
 - Fancode City can be identified by lat between ( -40 to 5) and long between ( 5 to 100) in users api
-```
+
+## Requirements
+- Python 3.x
+- requirement.txt library (`python3 -m pip install -r requirements.txt`)
+
 ### Resources(APIs) :- Endpoint http://jsonplaceholder.typicode.com/ 
 [/todos](http://jsonplaceholder.typicode.com/)
 [/posts](http://jsonplaceholder.typicode.com/)
@@ -21,65 +25,82 @@ Note :-
 [/photos](http://jsonplaceholder.typicode.com/)
 [/users](http://jsonplaceholder.typicode.com/)
 
-## Requirements
-- Python 3.x
-- requirement.txt library (`python3 -m pip install -r requirements.txt`)
 
-## Script Description
-- `fancodecities.py` Python script to automate testing the scenario.
-    - The script fetches users and todos from the JSONPlaceholder API.
-    - Calculates the completed task percentage for each user.
-    - Checks if the completed task percentage for FanCode users is greater than 50%.
-    - Outputs the result of the test.
-    - Output can be shown in json or tabular format.
+
+## Script Overview
+The main script, `fancodecities.py`, automates the scenario as follows:
+- Python script to automate testing the scenario.
+- The script fetches users and todos from the JSONPlaceholder API.
+- Calculates the completed task percentage for each user.
+- Checks if the completed task percentage for FanCode users is greater than 50%.
+- Outputs the result of the test.
+- Output can be shown in json or tabular format.
+- NOTE:- For Tabular and Json format selected user data is supported and 
+         only completed and total tasks will be shown.
+
+## Installation
+1. Clone the repository.
+```bash
+git clone https://github.com/kewalpithadia/FancodeAssignment.git
+cd fancode-todos-automation
+````
+
+## Install dependencies:
+```bash
+python3 -m pip install -r requirements.txt
+```
 
 ## How To Run The Script
 - Steps
+```bash
+python3 fancodecities.py endpoint=<somevalue> latrange=<latrange_value> 
+                         lngrange=<lngrange_value> format=<format_value>
 ```
-python3 fancodecities.py endpoint=<somevalue> latrange=-40,5 
-                         lngrange=5,100 format=table
-
-Supported Arguments
-1. endpoint (Optional)
-2. latrange (Optional)
-3. lngrange (Optional) 
-4. format   (Optional)
+Replace <endpoint_value>, <latrange_value>, <lngrange_value>, and \
+<format_value> with appropriate values as described below:
+## Supported Arguments
+- endpoint (Optional): API endpoint to fetch data. 
+  `Default is http://jsonplaceholder.typicode.com/.`
+### Example
+```bash
+python3 fancodecities.py endpoint=http://jsonplaceholder.typicode.com/
 ```
-- Information On Arguments
+- latrange (Optional): Latitude range for FanCode cities. Should be a comma-separated string of two numbers 
+                       where the first is less than the second.
+### Example
+```bash
+python3 fancodecities.py latrange=-40,5
 ```
-endpoint=<somevalue> :- 
-This is the endpoint for the api resources. 
-(Default Value Is http://jsonplaceholder.typicode.com/)
-Example python3 fancodecities.py endpoint=http://jsonplaceholder.typicode.com/
 
-latrange=<somevalue> :-
-This is a comma seperated string of 2 Numbers. Number One < Number 2
-Example python3 fancodecities.py latrange=-40,5 
-(Here -40,5 Denotes the latitude range of a city)
-Note:- If Number One > Number Two Script Will Exit with the reason. 
-       No Proper Range Provided.
-
-lngrange=<somevalue> :-
-This is a comma seperated string of 2 Numbers. Number One < Number 2
-Example python3 fancodecities.py lngrange=5,100 
-(Here 5,100 Denotes the longotude range of a city)
-Note:- If Number One > Number Two Script Will Exit with the reason. 
-       No Proper Range Provided.
-
-format=<json/table> :-
-This Param supports only 2 input values json or table.
-1. If format is given as an argument with value in [json, table].
-      You have to mention all the keys of user data 
-      you want to see in output in columns.cfg file.
-      Example of columns.cfg
-      [keys]
-      userkeys=id,name,email,address.geo.lat,address.geo.lng,company
-      Output will be Selected data for all the user who have have completed
-      more than or equal to 50% of their task.
-      Note :- userkeys is a comma seperated keys that is part of userdata. 
-      If wrong key is provided that will be mentioned in the output.
-
-2. If format is not given as an argument or format value is not in [json, table]. 
-      Output will be complete data for all the user who have have completed
-      more than or equal to 50% of their task. 
+- lngrange (Optional): Longitude range for FanCode cities. Should be a comma-separated string of two numbers 
+                       where the first is less than the second.
+### Example
+```bash
+python3 fancodecities.py lngrange=5,100
 ```
+
+- format(Optional): Output format. Supports `json` or `table`.
+### Example
+```bash
+python3 fancodecities.py format=table
+```
+
+## Output Format Details
+- If no format is specified or if an unsupported format is provided, the script defaults to displaying complete user data for those who have completed more than or equal to 50% of their tasks.
+- For json or table formats, customize the displayed user data keys by editing columns.cfg under the [keys][userkeys] section.
+### Example columns.cfg:
+```cfg
+[keys]
+userkeys=id,name,email,address.geo.lat,address.geo.lng,company
+```
+Note:
+- `userkeys` is a comma seperated string which keys that are present in user data. Also you can specify child key by seperating based on `.` as mentioned in above example `address.geo.lat`.
+- Ensure keys specified in columns.cfg are valid and exist in the user data structure.
+Incorrect keys will be mentioned in the output.
+- If no keys are specified in userkeys. All data of Users will be displayed.
+
+## Example
+```bash
+python3 fancodecities.py endpoint=http://jsonplaceholder.typicode.com/ latrange=-40,5 lngrange=5,100 format=table
+```
+This command fetches data from the specified endpoint, filters users from FanCode cities based on latitude and longitude ranges, formats the output as a table, and displays users who have completed more than 50% of their todos tasks. With only those key mentioned in columns.cfg.

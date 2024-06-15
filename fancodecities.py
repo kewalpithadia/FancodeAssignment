@@ -117,8 +117,8 @@ class FanCode:
                     self.logger.info("No Selected Keys Found For User Hence Exiting")
                     self.logger.info("Showing Complete Data")
                     for key in usertodocompeted.keys():
-                        self.logger.info(json.dumps(usertodocompeted.get(key), indent=4))
-                    sys.exit(1)
+                        userkeys = [x for x in usertodocompeted.get(key).get("data").keys()]
+                        break
             except Exception as err:
                 self.logger.info("Error In Fetching Columns Config With Error :- %s" % str(err))
                 sys.exit(1)
